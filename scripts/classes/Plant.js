@@ -13,7 +13,7 @@ export class Plant {
       return;
     }
 
-    if (this.growthStage < this.maxGrowthStage) {
+    if (this.growthStage < this.maxGrowthStage - 1) {
       this.growthStage++;
     }
   }
@@ -23,6 +23,6 @@ export class Plant {
   }
 
   getInfo() {
-    return `Стадия роста: ${this.growthStage}/${this.maxGrowthStage}`;
+    return `Стадия роста: ${this.growthStage + 1}/${this.maxGrowthStage}`;
   }
 }
