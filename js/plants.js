@@ -1,5 +1,5 @@
-// js/plants.js
-export class Plant {
+// js/plants.js - версия без модулей
+class Plant {
     constructor(name, minMoisture, maxMoisture) {
         this.name = name;
         this.minMoisture = minMoisture;
@@ -24,19 +24,19 @@ export class Plant {
     }
 }
 
-export class MarshPlant extends Plant {
+class MarshPlant extends Plant {
     constructor() {
         super('marshplant', 0.7, 1.0); // Болотник любит высокую влажность
     }
 }
 
-export class Potato extends Plant {
+class Potato extends Plant {
     constructor() {
         super('potato', 0.3, 0.8); // Картошка предпочитает среднюю влажность
     }
 }
 
-export class Cactus extends Plant {
+class Cactus extends Plant {
     constructor() {
         super('cactus', 0.0, 0.3); // Кактус предпочитает сухую почву
     }
