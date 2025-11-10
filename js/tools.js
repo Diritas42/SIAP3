@@ -1,3 +1,4 @@
+// js/tools.js
 export class ToolManager {
     constructor(grid) {
         this.grid = grid;
