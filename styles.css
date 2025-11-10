@@ -1,0 +1,310 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --success-color: #27ae60;
+    --danger-color: #e74c3c;
+    --warning-color: #f39c12;
+    --light-color: #ecf0f1;
+    --dark-color: #34495e;
+    --earth-dry: #f1c40f;
+    --earth-moist: #8b4513;
+    --water-color: #3498db;
+    --text-color: #2c3e50;
+    --border-radius: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+    color: white;
+    padding: 25px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+main {
+    padding: 25px;
+}
+
+.instructions {
+    background-color: var(--light-color);
+    padding: 15px 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 25px;
+    border-left: 4px solid var(--secondary-color);
+}
+
+.instructions h2 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.instructions ul {
+    padding-left: 20px;
+}
+
+.instructions li {
+    margin-bottom: 5px;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: var(--light-color);
+    border-radius: var(--border-radius);
+}
+
+.tools-section, .plants-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.tools-section h2, .plants-section h2 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 5px;
+}
+
+.tool-buttons, .plant-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.tool, .plant {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 15px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    min-width: 100px;
+}
+
+.tool {
+    background: linear-gradient(to bottom, var(--secondary-color), #2980b9);
+    color: white;
+}
+
+.tool.active {
+    background: linear-gradient(to bottom, var(--primary-color), #2c3e50);
+    box-shadow: 0 0 0 3px var(--light-color), 0 0 0 5px var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.plant {
+    background: linear-gradient(to bottom, var(--success-color), #219652);
+    color: white;
+}
+
+.tool:hover, .plant:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.tool-icon, .plant-icon {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.game-area {
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: var(--light-color);
+    border-radius: var(--border-radius);
+    display: flex;
+    justify-content: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-gap: 4px;
+    background-color: #bdc3c7;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cell {
+    aspect-ratio: 1;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.cell:hover {
+    transform: scale(1.08);
+    z-index: 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.water {
+    background: linear-gradient(135deg, var(--water-color), #2980b9);
+    position: relative;
+}
+
+.water::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.3) 100%);
+}
+
+.earth {
+    /* Цвет будет меняться в зависимости от влажности через JS */
+}
+
+.plant-container {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.plant-sprite {
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.growth-1 { transform: scale(0.7); opacity: 0.8; }
+.growth-2 { transform: scale(0.9); opacity: 0.9; }
+.growth-3 { transform: scale(1.1); opacity: 1; }
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    background-color: var(--light-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 15px;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--dark-color);
+    margin-bottom: 8px;
+}
+
+.stat-value {
+    display: block;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+footer p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+    }
+    
+    .tool-buttons, .plant-buttons {
+        justify-content: center;
+    }
+    
+    .grid {
+        grid-template-columns: repeat(8, 1fr);
+    }
+    
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+    
+    .tool, .plant {
+        min-width: 80px;
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    
+    .stats {
+        grid-template-columns: 1fr;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+    }
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сельскохозяйственный симулятор</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Сельскохозяйственный симулятор</h1>
+            <p class="subtitle">Лабораторная работа №3: ООП в JavaScript</p>
+        </header>
+        
+        <main>
+            <section class="instructions">
+                <h2>Как играть:</h2>
+                <ul>
+                    <li><strong>Лопата</strong> - копать землю/воду или убирать растения</li>
+                    <li><strong>Ведро + растение</strong> - посадить выбранное растение</li>
+                    <li>Цвет земли показывает уровень влажности (от сухого к влажному)</li>
+                    <li>Растения растут только при подходящей влажности</li>
+                </ul>
+            </section>
+            
+            <section class="controls">
+                <div class="tools-section">
+                    <h2>Инструменты</h2>
+                    <div class="tool-buttons">
+                        <button class="tool active" data-tool="shovel" title="Копать землю/убирать растения">
+                            <span class="tool-icon">⛏️</span>
+                            <span>Лопата</span>
+                        </button>
+                        <button class="tool" data-tool="bucket" title="Посадить растение/создать землю">
+                            <span class="tool-icon">🪣</span>
+                            <span>Ведро</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="plants-section">
+                    <h2>Растения</h2>
+                    <div class="plant-buttons">
+                        <button class="plant" data-plant="marshplant" title="Любит высокую влажность (0.7-1.0)">
+                            <span class="plant-icon">🌿</span>
+                            <span>Болотник</span>
+                        </button>
+                        <button class="plant" data-plant="potato" title="Предпочитает среднюю влажность (0.3-0.8)">
+                            <span class="plant-icon">🥔</span>
+                            <span>Картошка</span>
+                        </button>
+                        <button class="plant" data-plant="cactus" title="Любит сухую почву (0.0-0.3)">
+                            <span class="plant-icon">🌵</span>
+                            <span>Кактус</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="game-area">
+                <div class="grid" id="grid"></div>
+            </section>
+            
+            <section class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">День:</span>
+                    <span class="stat-value" id="day">1</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Растений:</span>
+                    <span class="stat-value" id="plants-count">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Водных клеток:</span>
+                    <span class="stat-value" id="water-count">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Активный инструмент:</span>
+                    <span class="stat-value" id="active-tool">Лопата</span>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>Разработано с использованием ООП в JavaScript</p>
+        </footer>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
