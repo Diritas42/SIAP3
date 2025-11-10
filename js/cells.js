@@ -1,5 +1,5 @@
-// js/cells.js
-export class Cell {
+// js/cells.js - версия без модулей
+class Cell {
     constructor(row, col, type) {
         this.row = row;
         this.col = col;
@@ -20,7 +20,7 @@ export class Cell {
     }
 }
 
-export class EarthCell extends Cell {
+class EarthCell extends Cell {
     constructor(row, col) {
         super(row, col, 'earth');
         this.moisture = 0;
@@ -35,7 +35,7 @@ export class EarthCell extends Cell {
         const searchRadius = 5;
         for (let i = Math.max(0, this.row - searchRadius); i <= Math.min(rows - 1, this.row + searchRadius); i++) {
             for (let j = Math.max(0, this.col - searchRadius); j <= Math.min(cols - 1, this.col + searchRadius); j++) {
-                if (grid[i][j].type === 'water') {
+                if (grid[i] && grid[i][j] && grid[i][j].type === 'water') {
                     const distance = Math.sqrt(
                         Math.pow(this.row - i, 2) + Math.pow(this.col - j, 2)
                     );
@@ -59,7 +59,7 @@ export class EarthCell extends Cell {
     }
 }
 
-export class WaterCell extends Cell {
+class WaterCell extends Cell {
     constructor(row, col) {
         super(row, col, 'water');
     }
