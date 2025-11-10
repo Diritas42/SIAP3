@@ -7,7 +7,9 @@ export class SwampPlant extends Plant {
 
   getImage() {
     const stages = ['🌱', '🪴', '🌿', '🍀', '🌾'];
-    return stages[this.growthStage] || stages[0];
+    // Обеспечиваем, что индекс не превышает длину массива - 1
+    const index = Math.min(this.growthStage, stages.length - 1);
+    return stages[index];
   }
 
   getInfo() {
