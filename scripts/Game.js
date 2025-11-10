@@ -1,7 +1,4 @@
 import { Cell } from './classes/Cell.js';
-import { SwampPlant } from './classes/SwampPlant.js';
-import { Potato } from './classes/Potato.js';
-import { Cactus } from './classes/Cactus.js';
 
 export class Game {
   constructor(width, height) {
@@ -93,7 +90,10 @@ export class Game {
       case 'potato':
       case 'cactus':
         if (cell.type === 'land') {
-          cell.plantSeed(this.selectedTool);
+          const planted = cell.plantSeed(this.selectedTool);
+          if (!planted) {
+            console.log('Не удалось посадить растение');
+          }
         }
         break;
     }
