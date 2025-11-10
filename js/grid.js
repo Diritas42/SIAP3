@@ -1,8 +1,5 @@
-// js/grid.js
-import { EarthCell, WaterCell } from './cells.js';
-import { MarshPlant, Potato, Cactus } from './plants.js';
-
-export class Grid {
+// js/grid.js - версия без модулей
+class Grid {
     constructor(rows, cols, container) {
         this.rows = rows;
         this.cols = cols;
@@ -15,6 +12,7 @@ export class Grid {
     }
     
     initGrid() {
+        console.log('Инициализация сетки...');
         // Создаем случайную сетку с землей и водой
         for (let i = 0; i < this.rows; i++) {
             this.cells[i] = [];
@@ -30,6 +28,7 @@ export class Grid {
         
         // После создания всех клеток рассчитываем влажность
         this.calculateMoisture();
+        console.log('Сетка инициализирована');
     }
     
     calculateMoisture() {
@@ -44,6 +43,7 @@ export class Grid {
     }
     
     render() {
+        console.log('Отрисовка сетки...');
         this.container.innerHTML = '';
         
         for (let i = 0; i < this.rows; i++) {
@@ -56,15 +56,17 @@ export class Grid {
                 
                 // Устанавливаем цвет земли в зависимости от влажности
                 if (cell.type === 'earth') {
-                    const moisture = cell.moisture;
+                    const moisture = cell.moisture || 0;
                     // Плавный переход от желтого (сухо) к темно-коричневому (влажно)
                     const r = Math.floor(241 - (40 * moisture)); 
                     const g = Math.floor(196 - (100 * moisture)); 
                     const b = Math.floor(15 + (60 * moisture));
                     cellElement.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
                     
-                    // Добавляем текст с процентом влажности для отладки (можно удалить)
-                    // cellElement.title = `Влажность: ${Math.round(moisture * 100)}%`;
+                    // Добавляем текст с процентом влажности для отладки
+                    cellElement.title = `Влажность: ${Math.round(moisture * 100)}%`;
+                } else if (cell.type === 'water') {
+                    cellElement.title = 'Вода';
                 }
                 
                 // Добавляем растение, если оно есть
@@ -88,11 +90,14 @@ export class Grid {
                     plantSprite.textContent = plantEmoji;
                     plantContainer.appendChild(plantSprite);
                     cellElement.appendChild(plantContainer);
+                    
+                    cellElement.title += ` | ${cell.plant.name} (${Math.round(cell.plant.growthStage * 100)}%)`;
                 }
                 
                 this.container.appendChild(cellElement);
             }
         }
+        console.log('Сетка отрисована');
     }
     
     getCell(row, col) {
@@ -104,6 +109,7 @@ export class Grid {
     
     setSelectedPlantType(plantType) {
         this.selectedPlantType = plantType;
+        console.log(`Выбрано растение: ${plantType}`);
     }
     
     dig(row, col) {
