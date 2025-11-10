@@ -1,12 +1,14 @@
-// js/main.js
-import { Grid } from './grid.js';
-import { ToolManager } from './tools.js';
-
-// Инициализация приложения
+// js/main.js - версия без модулей
 document.addEventListener('DOMContentLoaded', () => {
-    const gridElement = document.getElementById('grid');
-    const grid = new Grid(10, 10, gridElement);
+    console.log('DOM загружен, инициализация игры...');
     
+    const gridElement = document.getElementById('grid');
+    if (!gridElement) {
+        console.error('Элемент сетки не найден!');
+        return;
+    }
+    
+    const grid = new Grid(10, 10, gridElement);
     const toolManager = new ToolManager(grid);
     
     // Обновление статистики
@@ -40,10 +42,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // Инициализация статистики
     updateStats();
     
-    // Экспорт для отладки (можно удалить в продакшене)
-    window.game = {
-        grid,
-        toolManager,
-        stopGame: () => clearInterval(gameLoop)
-    };
+    console.log('Игра успешно инициализирована');
 });
