@@ -1,3 +1,4 @@
+// js/cells.js
 export class Cell {
     constructor(row, col, type) {
         this.row = row;
