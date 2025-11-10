@@ -1,3 +1,4 @@
+// js/grid.js
 import { EarthCell, WaterCell } from './cells.js';
 import { MarshPlant, Potato, Cactus } from './plants.js';
 
