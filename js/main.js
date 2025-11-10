@@ -1,3 +1,4 @@
+// js/main.js
 import { Grid } from './grid.js';
 import { ToolManager } from './tools.js';
 
