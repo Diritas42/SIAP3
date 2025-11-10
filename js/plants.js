@@ -1,3 +1,4 @@
+// js/plants.js
 export class Plant {
     constructor(name, minMoisture, maxMoisture) {
         this.name = name;
