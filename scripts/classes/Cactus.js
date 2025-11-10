@@ -7,7 +7,8 @@ export class Cactus extends Plant {
 
   getImage() {
     const stages = ['🌵', '🌵', '🌵'];
-    return stages[this.growthStage] || stages[0];
+    const index = Math.min(this.growthStage, stages.length - 1);
+    return stages[index];
   }
 
   getInfo() {
