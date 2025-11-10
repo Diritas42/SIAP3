@@ -1,3 +1,7 @@
+import { SwampPlant } from './SwampPlant.js';
+import { Potato } from './Potato.js';
+import { Cactus } from './Cactus.js';
+
 export class Cell {
   constructor(type, x, y) {
     this.type = type;
